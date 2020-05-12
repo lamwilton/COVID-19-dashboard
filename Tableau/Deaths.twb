@@ -1,0 +1,235 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20201.20.0326.1623                               -->
+<workbook original-version='18.1' source-build='2020.1.2 (20201.20.0326.1623)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <_.fcp.MarkAnimation.true...MarkAnimation />
+    <SheetIdentifierTracking />
+    <SortTagCleanup />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='deaths' inline='true' name='federated.0e9rluf0u8xqd714hjhyr1n7j81k' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='deaths' name='textscan.13xks4g0bcq95t1edlrlm0fl8yti'>
+            <connection class='textscan' directory='C:/Users/Administrator/Desktop' filename='deaths.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.13xks4g0bcq95t1edlrlm0fl8yti' name='deaths.csv' table='[deaths#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='string' name='Incident' ordinal='0' />
+            <column datatype='integer' name='Deaths' ordinal='1' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[deaths.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Incident</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Incident]</local-name>
+            <parent-name>[deaths.csv]</parent-name>
+            <remote-alias>Incident</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Deaths</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Deaths]</local-name>
+            <parent-name>[deaths.csv]</parent-name>
+            <remote-alias>Deaths</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <layout dim-ordering='alphabetic' dim-percentage='0.486957' measure-ordering='alphabetic' measure-percentage='0.513043' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Sheet 1'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='deaths' name='federated.0e9rluf0u8xqd714hjhyr1n7j81k' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0e9rluf0u8xqd714hjhyr1n7j81k'>
+            <column datatype='integer' name='[Deaths]' role='measure' type='quantitative' />
+            <column datatype='string' name='[Incident]' role='dimension' type='nominal' />
+            <column-instance column='[Deaths]' derivation='Attribute' name='[attr:Deaths:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Incident]' derivation='None' name='[none:Incident:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <manual-sort column='[federated.0e9rluf0u8xqd714hjhyr1n7j81k].[none:Incident:nk]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;Pearl Harbor&quot;</bucket>
+              <bucket>&quot;9/11&quot;</bucket>
+              <bucket>&quot;COVID-19&quot;</bucket>
+            </dictionary>
+          </manual-sort>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='width' field='[federated.0e9rluf0u8xqd714hjhyr1n7j81k].[none:Incident:nk]' value='191' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='height-header' value='224' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='font-size' scope='cols' value='15' />
+            <format attr='font-size' scope='rows' value='15' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <lod column='[federated.0e9rluf0u8xqd714hjhyr1n7j81k].[attr:Deaths:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0e9rluf0u8xqd714hjhyr1n7j81k].[attr:Deaths:qk]</rows>
+        <cols>[federated.0e9rluf0u8xqd714hjhyr1n7j81k].[none:Incident:nk]</cols>
+      </table>
+      <simple-id uuid='{D841303F-A7E1-4A86-8A0C-167FB1C73B95}' />
+    </worksheet>
+  </worksheets>
+  <windows source-height='30'>
+    <window class='worksheet' maximized='true' name='Sheet 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0e9rluf0u8xqd714hjhyr1n7j81k].[none:Incident:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{2E5AE689-C5AF-4C88-8404-0E3C4E41E10F}' />
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Sheet 1' width='192'>
+      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
+      Abg57k/PUl5eTjgUYHzoSxx/iNtf3CKdjDExtcjizDhPttKeDCfiFW/eDp1Lk0qlmZ2do6mt
+      g0TWpi9azebyPMmMy9OlWbJODZc6KrUi7JjRijDA9YV5+53LONkEN29P4CeH47pksjl8tkWk
+      pIxcOk7WcfHbtlaEHSNaEQbkMkkmJu/jOFkamloodLe5e3eIQKSScDBIZU2U5miQezPz9HQ2
+      ezGkiCc8CcAfLOTUwOBX7qmkqv4Pt3q6nl32lnoxmoh38n/7JfIKKQAxmgIQo+0bQGJjlUeL
+      i/zqo4+IbaUOak4iB2bfg+Chzz7h9uwqvmAhS/91gx9//+2DmpfIgdh3C9Dc0cXswhoX+tuo
+      q9NZ3uX42TeAQDhCS1MtdyfmqCoJHdScRA7MvrtAj+6N0/P6e1zuP4F9BP7iJ/L/9eIA3By/
+      /Ie/Y3rhMWs7w9z5tITz77zP5XPdBzw9kVdrjy2Azff/6q9ZnpvGV9ZIqS/ObCx7sDMTOQAv
+      DsCySGys8uEv/gn/iTNUZhfZLh3kZGvdAU9P5NXa8xjA9vmpqW/EV15KU20bff19BzkvkQOx
+      55FtuLiC9//ie6zNjfO7a1f5YmT6JU/l4rov/xDJJ/v+FujLa78mUNbIW23FjCys8saZrj0f
+      m9tNcOXfPuLct/+c9PI0a0mHdMbhbH89o1MJ2qLwaMfPQFeT5y9C5JvaN4C+829Qvpnh+sdX
+      uPDeD/Z8nOu6jA6P0dvfC0BsK823Lpxn7O4XJDMOTibJ1HySixe/pRVhx8yxXhEWDIW4euWf
+      OdHSQTy593rendg8y5spwusxApnQ15505fE8FfX1WDxbQaQVYcfHUV8Rtu/shz//Dd2X3sLv
+      pJmYfLjn44qrm/mzdy/T2dZKc1MD0fJCbt+5SzwXJBywqW/ppruxhNF7s+jnvuSTfbcA/Rfe
+      5Cc//RlrcZcf/813Xvpkde09z66U9vHVPf1zp59dVn7TWYq8InsG4Lo5JiemqKxt4tLAeTrq
+      yw9yXiIHYs9doLtXP+TOUo7vfvd9VoY+5eqdvXeBRI6qPQOYmlnincsXiESKeOvt15iZetnf
+      AUSOnj13gXpO9fDxLz94fvvsmy8/BhA5avYMYPC1dxl87d2DnIvIgcv/X+KKvEIKQIymAMRo
+      CkCMpgDEaApAjKYAxGgKQIzmyfkBnOwuk5OTZLNZwuV1lNgJHsW28QXC9HZUMj2boqUuyMMn
+      Kfo6tSJM8ocnAVi+AG3t7aw8XmA7nWZ+4ynnzp9n9M4tErslJBJJRsYWOHvpktYIHzdH4Gvo
+      uC7OHivXvAnAssjupklncjjkwLKxLQu/z4fjuCw+mKC6rZOAbT2fiL75j4cj8VXc54etJwFk
+      0jusbSYpKytjfnmD4pDF3OISm8kcrQGbhvZ+qiNxZh6t0tZYjaUlkcfGUfga2raNz+d74ec8
+      OkdYhJKiFKmMy5mBXmwcYqsxzpw9S9Dv0tddQUGBn3gi6cVwIp7xbBeorKLqK/f4qI5Gn98K
+      h59dFkUiXgwn4hn9GlSMpgDEaApAjKYAxGgKQIymAMRoCkCMpgDEaApAjKYAxGgKQIymAMRo
+      nrwZznWyTE1MkM7kqG5oodhOMb2wTHFZNS31RTxa3qWxpoDZpU06Whu9GFLEE94E4EJLZzcB
+      a5ebt+/hJ82Z8xcZ/vIGicpmYk8TrC/dp/P0RS+GE/GMJwHYPj+7G8vcmphh8Ow5psZG8dsW
+      4VCQbNZhcXqYms5+ikI+nSTvmDnWJ8n7v3J249wef8jlN9/AtlwCVpbtZJqteIqmoE1DxyBh
+      N8bKepxoeUQnyTtGjvpJ8rwJwIXK0kLGx0Ypqajh1MAg0zMzdPadpiBk0dpcREVZEyuxdVy0
+      KEbyhzdLIkMRTg0M/tF9J3t6n1+vrHh2WVtT7cVwIp7J/+2XyCukAMRoCkCMpgDEaApAjKYA
+      xGgKQIymAMRoCkCM9j9So0ITiONyDAAAAABJRU5ErkJggg==
+    </thumbnail>
+  </thumbnails>
+</workbook>
