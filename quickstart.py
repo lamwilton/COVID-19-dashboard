@@ -6,6 +6,7 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 from googleapiclient.http import MediaFileUpload, MediaIoBaseDownload
 
+import datetime
 
 # If modifying these scopes, delete the file token.pickle.
 SCOPES = ['https://www.googleapis.com/auth/drive']
@@ -47,14 +48,18 @@ def main():
         print('Files:')
         for item in items:
             print(u'{0} ({1})'.format(item['name'], item['id']))
+
+
     # Upload file
-    # Input name of file, and folder id of destination folder
-    file_metadata = {'name': 'combined_usafacts.csv', 'parents': ['1qS15m3_gbaKhKlpyp42bgJhDZhr7Sq_B']}
+    # Input name of file, and folder id of destination folder. Add todays date also
+    today = datetime.date.today()
+
+    file = {'name': 'combined_usafacts' + today.strftime('%m%d') + '.csv', 'parents': ['1qS15m3_gbaKhKlpyp42bgJhDZhr7Sq_B']}
     # Input path of source file
-    media = MediaFileUpload('./output/combined_usafacts.csv', mimetype='image/jpeg')
-    file = service.files().create(body=file_metadata,
-                                        media_body=media,
-                                        fields='id', ).execute()
+    media = MediaFileUpload('./output/combined_usafacts.csv')
+    file = service.files().create(body=file, fields='id',
+                                        media_body=media
+                                        ).execute()
     print
     'File ID: %s' % file.get('id')
 
