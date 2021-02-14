@@ -16,13 +16,13 @@ if __name__ == "__main__":
     # Read both csvs and inner join
     cases_df = pd.read_csv(
         "https://usafactsstatic.blob.core.windows.net/public/data/covid-19/covid_confirmed_usafacts.csv")
-    cases_df = cases_df.melt(id_vars=["countyFIPS", "County Name", "State", "stateFIPS"],
+    cases_df = cases_df.melt(id_vars=["countyFIPS", "County Name", "State", "StateFIPS"],
                              var_name="Date",
                              value_name="Cases")
 
     deaths_df = pd.read_csv(
         "https://usafactsstatic.blob.core.windows.net/public/data/covid-19/covid_deaths_usafacts.csv")
-    deaths_df = deaths_df.melt(id_vars=["countyFIPS", "County Name", "State", "stateFIPS"],
+    deaths_df = deaths_df.melt(id_vars=["countyFIPS", "County Name", "State", "StateFIPS"],
                                var_name="Date",
                                value_name="Deaths")
     deaths_df = deaths_df[['countyFIPS', 'Date', 'Deaths']]
