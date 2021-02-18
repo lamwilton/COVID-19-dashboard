@@ -28,7 +28,7 @@ if __name__ == "__main__":
     deaths_df = deaths_df[['countyFIPS', 'Date', 'Deaths']]
 
     main_df = pd.merge(cases_df, deaths_df, "inner", on=['countyFIPS', 'Date'])
-    main_df = main_df.rename(columns={'County Name': 'County_Name'})
+    main_df = main_df.rename(columns={'County Name': 'County_Name', 'StateFIPS': 'stateFIPS'})
 
     # Get list of FIPS and drop 0
     fips = main_df.countyFIPS.unique()
