@@ -47,10 +47,12 @@ if __name__ == "__main__":
         temp_df['rate_deaths'] = temp_df['Deaths'].pct_change().fillna(0)
         temp_df['rate_deaths7day'] = temp_df['rate_deaths'].rolling(window=7).mean().fillna(0)
         temp_df = temp_df.replace(np.inf, 0)
+        temp_df = temp_df[temp_df['Date'] >= '2020-08-01']  # Trim data by date because too large
         if i == 0:
             new_df = temp_df
         else:
             new_df = pd.concat([new_df, temp_df])
+
 
     new_df.to_csv(os.path.join("output", "combined_usafacts.csv"), index=False)
     print("Total time: " + str(time.time() - start_time))
