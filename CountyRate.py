@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import time
 import os
+from urllib.request import Request, urlopen
 
 """
 # County data growth rate and 7day average
@@ -12,16 +13,20 @@ Outputs combined_usafacts.csv
 """
 if __name__ == "__main__":
     start_time = time.time()
+    req = Request("https://static.usafacts.org/public/data/covid-19/covid_confirmed_usafacts.csv?_ga=2.214028119.1303181313.1633970518-2063448721.1633809607")
+    req.add_header('User-Agent', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:77.0) Gecko/20100101 Firefox/77.0')
+    content = urlopen(req)
 
     # Read both csvs and inner join
-    cases_df = pd.read_csv(
-        "https://usafactsstatic.blob.core.windows.net/public/data/covid-19/covid_confirmed_usafacts.csv")
+    cases_df = pd.read_csv(content)
     cases_df = cases_df.melt(id_vars=["countyFIPS", "County Name", "State", "StateFIPS"],
                              var_name="Date",
                              value_name="Cases")
 
-    deaths_df = pd.read_csv(
-        "https://usafactsstatic.blob.core.windows.net/public/data/covid-19/covid_deaths_usafacts.csv")
+    req = Request("https://static.usafacts.org/public/data/covid-19/covid_deaths_usafacts.csv?_ga=2.214028119.1303181313.1633970518-2063448721.1633809607")
+    req.add_header('User-Agent', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:77.0) Gecko/20100101 Firefox/77.0')
+    content = urlopen(req)
+    deaths_df = pd.read_csv(content)
     deaths_df = deaths_df.melt(id_vars=["countyFIPS", "County Name", "State", "StateFIPS"],
                                var_name="Date",
                                value_name="Deaths")

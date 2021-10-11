@@ -1,2 +1,2 @@
-python3 ./CountyRate.py
-python3 ./quickstart.py
+python ./CountyRate.py
+python ./quickstart.py
